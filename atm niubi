@@ -1,0 +1,376 @@
+#include <stdio.h>
+#include <stdlib.h>
+ int m;//全局变量 
+ int *n;//全局指针 
+
+
+void v1()//提示语
+	{
+	 printf("***************************************************\n");
+	 printf("*****************欢迎使用ATM取款机*****************\n");
+	 printf("***************************************************\n"); 
+	 system("pause");
+	 } 
+struct  account
+{
+  int id ;
+  char username[20];
+  int password;
+  float balance;
+  long int numble;
+}users[3]={{1001,"cc",111,1000,1234123},{1002,"cy",222,2000,12345678},{1003,"qq",333,3000,12349876}};
+
+
+ void intt()//初始化 
+{
+	FILE *fp;
+	int i;
+	fp=fopen("C:\\Users\\cqie\\Desktop\\zq.txt","w");
+
+	for(i=0;i<3;i++)
+	{
+		fscanf(fp,"%d%s%d%lf%lf\n",users[i].id,users[i].username,users[i].password,users[i].balance,users[i].numble);	
+	}
+	fclose(fp);
+}
+	void Disolay()//菜单项 
+	{
+	void Qut();
+	void cunkuan();
+	void chaxun();
+	void changepwd() ;
+	void zhanghu();
+				
+		system("cls");
+		int i=0;
+		while(1)
+		{
+		printf("*****************************************************\n"); 
+		printf("-----------1.取款------------2.存款------------------\n"); 
+		printf("-----------3.查询余额--------4.转账--------------\n"); 	
+		printf("---------- 5.账户信息--------6.修改密码------------------\n"); 
+		printf("-----------7.退出------------------------------------\n"); 
+	
+	    printf("*****************************************************\n"); 
+		printf("1.请选择您要办理的业务!\n"); 
+	
+		scanf("%d",&i);
+		system("cls");
+		switch(i)
+		{  
+		case 1: printf("###################正在办理取款业务##################\n\n\n");
+		system("color 5F");
+	           	   Qut();
+		          break; 
+		case 2:printf("###################正在办理存款业务###################\n\n\n");
+		          cunkuan();
+			      break; 
+        case 3: printf("###################正在办理查询业务###################\n\n\n");
+		           chaxun();break;
+        case 4: printf("###################正在办理转账业务###################\n\n\n");
+        case 5: printf("##################正在办理账户信息业务################\n\n\n"); 
+		              zhanghu();break;
+        case 6:printf("#################正在办理修改密码业务##################\n\n\n");
+                changepwd();
+		        break;
+		
+        
+	    case 7:  printf("退出");exit(0);
+	    }
+   }
+   }
+
+	
+	 void Qut()//取款业务 
+   {
+   	
+		printf("****************请选择您的取款金额*****************\n");
+		printf("-----------1.100元-------------2.200元-------------\n"); 
+		printf("-----------3.500元-------------4.1000元------------\n"); 
+		printf("---------- 5.2000元------------6.其他金额----------\n"); 
+	    printf("***************************************************\n");
+	    printf("***************************************************\n"); 
+	    int i=0;
+		scanf("%d",&i);
+		system("cls");
+		 	switch(i)//
+		 	{
+		 		
+		 		case 1:   
+				     if(users[m].balance>=100)
+		 		{
+				        users[m].balance=users[m].balance-100; 
+				       printf("取款成功!\n您的已成功取出100元!\n,您当前账户的余额为:%f", users[m].balance);
+				       system("pause");
+				       system("cls");
+					   break;
+				}
+				else {
+                       printf("你的余额不足，请重新操作！\n");
+                        system("pause");
+                        system("cls");
+                         goto t;
+                    }
+		 		case 2:  if(users[m].balance>=200)
+		 		{
+				 
+				       users[m].balance=users[m].balance-200; 
+				       printf("取款成功!\n您的已成功取出200元!\n,您当前账户的余额为:%f", users[m].balance);
+				       system("pause");
+				       system("cls");
+					   break;
+				}
+				else {
+                       printf("你的余额不足，请重新操作！\n");
+                        system("pause");
+                        system("cls");
+                         goto t;
+                     }
+		 		case 3: 
+				      if(users[m].balance>=500)
+		 		{
+				 
+				       users[m].balance=users[m].balance-500; 
+				       printf("取款成功!\n您的已成功取出500元!\n,您当前账户的余额为:%f", users[m].balance);
+				       system("pause");
+			           system("cls");
+					   break;
+				}
+				else {
+                       printf("你的余额不足，请重新操作！\n");
+                        system("pause");
+                        system("cls");
+                         goto t;
+                     }
+				case 4: if(users[m].balance>=1000)
+		 		{
+				 
+				       users[m].balance=users[m].balance-1000; 
+				       printf("取款成功!\n您的已成功取出1000元!\n,您当前账户的余额为:%f", users[m].balance);
+				       system("pause");
+				       system("cls");
+					   break;
+				}
+				else {
+                       printf("你的余额不足，请重新操作！\n");
+                        system("pause");
+                         system("cls");
+                         goto t;
+                     }
+				case 5:if(users[m].balance>=2000)
+		 		{
+				 
+				       users[m].balance=users[m].balance-2000; 
+				       printf("取款成功!\n您的已成功取出2000元!\n,您当前账户的余额为:%f", users[m].balance);
+				       system("pause");
+				       system("cls");
+					   break;
+				}
+				else {
+                       printf("你的余额不足，请重新操作！\n");
+                        system("pause");
+                         system("cls");
+                         goto t;
+                     }
+				case 6:
+				t:
+					
+				printf("**************请输入你想要取款的金额***************\n");//取款自定义金额   
+				 int j=0;
+				 scanf("%d",&j);
+				if(users[m].balance>=j) 
+				{
+				
+				system("cls");
+				users[m].balance=users[m].balance-j;
+				printf("取款成功!\n您成功取出%lf元!\n",users[m].balance);
+				break;
+			}
+				else {
+                       printf("你的余额不足，请重新操作！\n"); 
+                        system("pause");
+                        system("cls");
+                         goto t;
+                    }
+                     system("pause");
+                     system("cls");
+                     printf("请进行新的操作！！！\n");
+			 }
+	} 
+   
+   void cunkuan()//存款业务 
+   {
+	
+   
+   	    printf("****************请选择您的存款金额*****************\n");
+		printf("-----------1.100元-------------2.200元-------------\n"); 
+		printf("-----------3.500元-------------4.1000元------------\n"); 
+		printf("---------- 5.2000元------------6.其他金额----------\n"); 
+	    printf("***************************************************\n");
+	    printf("***************************************************\n"); 
+	    int i=0;
+		scanf("%d",&i);
+		system("cls");
+		 	switch(i)//
+		 	{
+		 	case 1: 
+				 users[m].balance=users[m].balance+100; 
+				 printf("存款成功!\n您的已成功存入100元!\n您的账户余额为:%lf",users[m].balance);
+				 system("pause");
+				 system("cls");
+				 break;
+		    case 2:
+				 users[m].balance=users[m].balance+200; 
+				 printf("存款成功!\n您的已成功存入200元!\n您的账户余额为:%lf",users[m].balance);
+				 system("pause");
+				 system("cls");
+				 break;
+		 	case 3:
+				 users[m].balance=users[m].balance+500; 
+				 printf("存款成功!\n您的已成功存入500元!\n您的账户余额为:%lf",users[m].balance);
+				 system("pause");
+			     system("cls");
+				 break;
+			case 4:
+				 users[m].balance=users[m].balance+1000; 
+				 printf("存款成功!\n您的已成功存入1000元!\n您的账户余额为:%lf",users[m].balance);
+				 system("pause");
+				 system("cls");
+				 break;
+			case 5:
+				 users[m].balance=users[m].balance+2000; 
+				 printf("存款成功!\n您的已成功存入2000元!\n您的账户余额为:%lf",users[m].balance);
+				 system("pause");
+			 	 system("cls");
+				 break;
+			case 6:
+				printf("**************请输入你想要存入的金额***************\n");//取款自定义金额    
+				int j=0;
+				scanf("%d",&j);	
+				users[m].balance=users[m].balance+j; 
+				system("cls");
+				printf("存款成功!\n您的已成功存入%d元!\n您当前账户余额为:%lf",j,users[m].balance); 
+				system("pause");
+				system("cls");
+				break;
+			 }
+	} 
+   
+void chaxun()                                                         //查询余额业务 
+{
+  printf("您当前账户余额为：%lf\n",users[m].balance);
+  system("pause");
+  system("cls");
+  printf("请进行新的操作！！！\n");
+  Disolay();
+}
+	
+void zhanghu()//账户信息 
+{
+	  printf("%d\t%s\t%d\t%lf\t%d\n",users[m].id,users[m].username,users[m].password,users[m].balance,users[m].numble);
+      system("pause");
+      system("cls");
+  printf("请进行新的操作！！！\n");
+}
+	
+ 
+void login()               //登录界面
+{
+    system("color 3F");
+	void v1();
+    int i,x,z,e,time=1;
+    int bianli(int a,int b);
+    system("cls");
+    printf("**********************请先登录***************************\n"); 
+    printf("请输入您的账户：");
+    scanf("%d",&z);
+    printf("请输入您的密码：");
+    scanf("%d",&e);
+    for(i=0;i<3;i++)
+  {
+	 x=bianli(z,e);
+	 if(x)
+	 {
+		 printf("登录成功！！！");
+		 system("pause");
+		 system("cls");
+		 break;
+	 }
+	 else
+	 { system("color 1F");
+		printf("账户或密码错误！！！\n");
+		system("pause");
+		system("cls");
+		printf("请重新输入账户: ");
+		scanf("%d",&z);
+		system("cls");
+		printf("请重新输入密码: ");
+        scanf("%d",&e);
+		system("cls");
+		time++;
+	 }	
+	 if(time==3)
+		{
+			printf("账户和密码输入错误3次，退出系统！！！\n");
+			break;
+		}
+ }
+}
+int bianli(int a,int b)                                              //遍历函数
+{
+ int i,j;
+ for(i=0;i<3;i++)
+ {
+  if(users[m].id==a&&users[m].password==b)
+  {
+    i=m;
+	j=1;
+	return j;
+  }
+ }j=0;
+ return j;
+}
+
+
+
+
+void changepwd()              //修改密码业务 
+{
+ int i,j,k;
+h: printf("请输入你的新密码：");
+ scanf("%d",&i);
+ printf("\n");
+ system("cls");
+ printf("请再次输入新密码：");
+ scanf("%d",&j);
+ printf("\n");
+ system("cls");
+ if(i!=j)
+ {
+	printf("你两次输入的密码不一致，请重新输入！！！\n");
+	goto h;//跳回h页面 
+ }
+ else
+ {
+	users[m].password=j;
+printf("修改密码成功！！！\n");
+	system("pause");
+	system("cls");
+	printf("请进行新的操作！！！\n");
+    Disolay();
+ }
+}
+int main() //主函数 
+{  
+     
+       intt();//初始化 
+	   system("cls"); 
+	   system("color 3F");
+	   v1(); 
+	   system("color 3F");
+	   login();//登录页面 
+	   system("color  6F");
+       Disolay();//菜单页面 
+	   return 0;
+	 
+}
